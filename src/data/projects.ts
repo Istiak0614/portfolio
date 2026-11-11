@@ -96,7 +96,7 @@ export const projects: Project[] = [
       "Price alerts for chosen items",
       "A Bengali and English language toggle",
     ],
-    liveUrl: "https://bazar-dor-seven-pied.vercel.app/",
+    liveUrl: "https://bazar-dor-tau-eight.vercel.app/",
     clientRepo: "https://github.com/Istiak0614/bazar_dor",
   },
   {
