@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { profile } from "@/data/profile";
 import { MotionProvider } from "@/components/motion-provider";
 import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 import "./globals.css";
 
 const bricolage = localFont({
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MotionProvider>
           <Navbar />
           <div id="main-content">{children}</div>
+          <Footer />
         </MotionProvider>
       </body>
     </html>

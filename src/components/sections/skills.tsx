@@ -83,7 +83,7 @@ export function Skills() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2">
           {skillCategories.map((category, index) => {
             const Icon = categoryIcons[category.title] ?? Layers;
             return (
@@ -102,7 +102,7 @@ export function Skills() {
                   </div>
                 </div>
 
-                <ul className="mt-6 grid gap-x-6 sm:grid-cols-2">
+                <ul className="mt-6 grid grid-cols-1 gap-x-6 sm:grid-cols-2">
                   {category.skills.map((skill) => (
                     <li
                       key={skill.name}

@@ -111,7 +111,7 @@ function StackList({ stack, limit }: { stack: string[]; limit: number }) {
 export function ProjectCard({ project, layout = "default", priority }: ProjectCardProps) {
   if (layout === "wide") {
     return (
-      <article className="group glass relative grid gap-8 rounded-[var(--radius-card)] p-4 transition-[border-color,transform] duration-500 hover:border-electric/35 md:p-6 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-10">
+      <article className="group glass relative grid grid-cols-1 gap-8 rounded-[var(--radius-card)] p-4 transition-[border-color,transform] duration-500 hover:border-electric/35 md:p-6 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-10">
         <BrowserFrame project={project} sizes="(min-width: 1024px) 40rem, 100vw" priority={priority} />
         <div className="px-2 pb-2 lg:px-0 lg:pr-4">
           <p className="text-sm text-electric-soft">Featured project</p>
@@ -132,7 +132,7 @@ export function ProjectCard({ project, layout = "default", priority }: ProjectCa
 
   if (layout === "compact") {
     return (
-      <article className="group glass grid gap-6 rounded-[var(--radius-card)] p-4 transition-[border-color] duration-500 hover:border-electric/35 sm:grid-cols-[16rem_1fr] sm:items-center md:p-5">
+      <article className="group glass grid grid-cols-1 gap-6 rounded-[var(--radius-card)] p-4 transition-[border-color] duration-500 hover:border-electric/35 sm:grid-cols-[16rem_1fr] sm:items-center md:p-5">
         <BrowserFrame project={project} sizes="16rem" />
         <div>
           <h3 className="text-xl font-semibold text-white">{project.name}</h3>
@@ -150,7 +150,7 @@ export function ProjectCard({ project, layout = "default", priority }: ProjectCa
   }
 
   return (
-    <article className="group glass flex flex-col rounded-[var(--radius-card)] p-4 transition-[border-color] duration-500 hover:border-electric/35 md:p-5">
+    <article className="group glass flex w-full min-w-0 flex-col rounded-[var(--radius-card)] p-4 transition-[border-color] duration-500 hover:border-electric/35 md:p-5">
       <BrowserFrame project={project} sizes="(min-width: 768px) 34rem, 100vw" />
       <div className="flex flex-1 flex-col px-1 pt-6">
         <h3 className="text-2xl font-semibold text-white">{project.name}</h3>

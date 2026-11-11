@@ -22,12 +22,14 @@
 
 @layer base {
   html {
+    overflow-x: clip;
     color-scheme: dark;
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
   }
 
   body {
+    overflow-x: clip;
     background-color: var(--color-ink);
     color: var(--color-text);
     font-family: var(--font-sans);

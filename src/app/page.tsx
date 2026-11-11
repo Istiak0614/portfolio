@@ -3,7 +3,7 @@ import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
 import { Education } from "@/components/sections/education";
 import { Projects } from "@/components/sections/projects";
-import { SectionPlaceholder } from "@/components/sections/section-placeholder";
+import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Skills />
       <Education />
       <Projects />
-      <SectionPlaceholder id="contact" title="Contact" note="Email, phone and WhatsApp." />
+      <Contact />
     </main>
   );
 }

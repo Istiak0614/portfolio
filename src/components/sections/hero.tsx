@@ -55,7 +55,7 @@ export function Hero() {
         className="absolute bottom-[-25%] left-[-12%] -z-10 size-[30rem] rounded-full bg-violet/10 blur-[140px]"
       />
 
-      <div className="container-page grid min-h-dvh items-center gap-14 pt-28 pb-20 md:grid-cols-[1.15fr_0.85fr] md:gap-12 lg:gap-20">
+      <div className="container-page grid grid-cols-1 min-h-dvh items-center gap-14 pt-28 pb-20 md:grid-cols-[1.15fr_0.85fr] md:gap-12 lg:gap-20">
         <motion.div variants={container} initial="hidden" animate="show" className="max-w-xl">
           <motion.p
             variants={item}

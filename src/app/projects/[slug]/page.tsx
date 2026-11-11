@@ -98,7 +98,7 @@ async function ProjectDetails({ params }: Pick<PageProps<"/projects/[slug]">, "p
         </div>
       </Reveal>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+      <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
         <Reveal>
           <h2 className="text-2xl font-semibold text-white md:text-3xl">Overview</h2>
           <p className="mt-4 text-lg text-muted">{project.description}</p>
@@ -172,7 +172,7 @@ async function ProjectDetails({ params }: Pick<PageProps<"/projects/[slug]">, "p
             Challenges I solved
           </h2>
         </Reveal>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           {project.challenges.map((challenge, i) => (
             <Reveal key={challenge.title} delay={i * 0.08} className="border-t border-electric/40 pt-5">
               <h3 className="text-lg font-semibold text-white">{challenge.title}</h3>
@@ -188,7 +188,7 @@ async function ProjectDetails({ params }: Pick<PageProps<"/projects/[slug]">, "p
             <Lightbulb aria-hidden className="size-6 text-violet" />
             Future improvements
           </h2>
-          <ul className="mt-6 grid gap-3 md:grid-cols-3">
+          <ul className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
             {project.futurePlans.map((plan) => (
               <li key={plan} className="rounded-xl border border-line bg-ink/40 px-4 py-3.5 text-text">
                 {plan}

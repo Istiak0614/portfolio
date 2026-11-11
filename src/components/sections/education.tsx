@@ -31,7 +31,7 @@ export function Education() {
                   className="blueprint-grid absolute inset-0 -z-10 opacity-60"
                 />
 
-                <div className="grid gap-10 p-6 md:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+                <div className="grid grid-cols-1 gap-10 p-6 md:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
                   <div>
                     <span className="grid size-12 place-items-center rounded-xl border border-electric/30 bg-electric/10 text-electric-soft">
                       <GraduationCap aria-hidden className="size-6" />
