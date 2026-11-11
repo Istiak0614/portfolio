@@ -1,15 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 // The active section is the last one whose top has passed 35% of the viewport.
 export function useActiveSection(ids: string[]) {
   const [active, setActive] = useState(ids[0]);
+  const pathname = usePathname();
 
   useEffect(() => {
     let frame = 0;
 
     const update = () => {
+      if (pathname !== "/" || !document.getElementById(ids[0])) {
+        setActive("");
+        return;
+      }
       const line = window.innerHeight * 0.35;
       let current = ids[0];
       for (const id of ids) {
@@ -33,7 +39,7 @@ export function useActiveSection(ids: string[]) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [ids]);
+  }, [ids, pathname]);
 
   return active;
 }

@@ -1,6 +1,5 @@
 import type { Project } from "@/types";
 
-// Future plans are filled in during Milestone 6, once confirmed.
 export const projects: Project[] = [
   {
     slug: "studiospace",
@@ -44,7 +43,11 @@ export const projects: Project[] = [
           "Built a glassmorphism “Midnight Studio” design that works in both light and dark themes across every page.",
       },
     ],
-    futurePlans: [],
+    futurePlans: [
+      "Online payment for booking deposits",
+      "Real-time notifications for new and confirmed bookings",
+      "Automated tests for the double-booking logic",
+    ],
     liveUrl: "https://studiospace-client-lovat.vercel.app/",
     clientRepo: "https://github.com/Istiak0614/studiospace-client",
   },
@@ -71,8 +74,28 @@ export const projects: Project[] = [
       "Protected details showing minimum, maximum and average market prices",
       "Email/password, Google and GitHub sign-in",
     ],
-    challenges: [],
-    futurePlans: [],
+    challenges: [
+      {
+        title: "An unreliable price API",
+        detail:
+          "Product prices come from an external API that could be slow or unavailable. I fetch on the server with timeouts, fall back to a second API, and revalidate every 60 seconds.",
+      },
+      {
+        title: "Trusting outside data",
+        detail:
+          "API responses are validated with Zod before they reach the interface, so malformed or changed data can't break the page.",
+      },
+      {
+        title: "OAuth across environments",
+        detail:
+          "Configured Google and GitHub sign-in with Better Auth and MongoDB so callback URLs work in both local development and production.",
+      },
+    ],
+    futurePlans: [
+      "Price-history charts for each product",
+      "Price alerts for chosen items",
+      "A Bengali and English language toggle",
+    ],
     liveUrl: "https://bazar-dor-seven-pied.vercel.app/",
     clientRepo: "https://github.com/Istiak0614/bazar_dor",
   },
@@ -99,8 +122,28 @@ export const projects: Project[] = [
       "Sorting by duration, calories or rating, plus search by name, tag or equipment",
       "Plan and saved data persist across page reloads",
     ],
-    challenges: [],
-    futurePlans: [],
+    challenges: [
+      {
+        title: "Shared state across pages",
+        detail:
+          "Today's plan, the saved list and the navbar counters all read from one React Context, so every part of the app stays in sync.",
+      },
+      {
+        title: "Enforcing plan rules",
+        detail:
+          "The daily plan is capped at five workouts and blocks duplicates, with toast messages that explain why an action didn't happen.",
+      },
+      {
+        title: "Persistence without flicker",
+        detail:
+          "Plan and saved data are kept in localStorage and restored on load without a flash of empty content or a server/client mismatch.",
+      },
+    ],
+    futurePlans: [
+      "User accounts with cloud sync",
+      "A weekly progress history",
+      "Custom workouts and a rest timer",
+    ],
     liveUrl: "https://fitlog-blond-xi.vercel.app/",
     clientRepo: "https://github.com/Istiak0614/fitlog",
   },
@@ -110,7 +153,7 @@ export const projects: Project[] = [
     tagline: "ESP32-CAM and YOLO computer vision",
     description:
       "A low-cost real-time fruit detection system. An ESP32-CAM captures images and sends them over Wi-Fi to a laptop, where Python and OpenCV run a YOLO model and draw bounding boxes, labels and confidence scores.",
-    image: "/images/projects/iot-fruit-detection.png",
+    image: "/images/projects/iot-fruit-detection.jpg",
     featured: false,
     stack: ["Python", "OpenCV", "YOLOv8", "ESP32-CAM", "Arduino IDE", "Google Colab"],
     highlights: [
@@ -118,8 +161,28 @@ export const projects: Project[] = [
       "Inference offloaded to a laptop because of ESP32-CAM hardware limits",
       "YOLOv8 model trained on a custom fruit dataset",
     ],
-    challenges: [],
-    futurePlans: [],
+    challenges: [
+      {
+        title: "Limited hardware",
+        detail:
+          "The ESP32-CAM can't run a YOLO model, so it only captures and serves frames while inference runs on a laptop over Wi-Fi.",
+      },
+      {
+        title: "Latency over Wi-Fi",
+        detail:
+          "Frames travel over a mobile hotspot, so I balanced image size, detection accuracy and frame rate to keep results close to real time.",
+      },
+      {
+        title: "Training a custom model",
+        detail:
+          "Prepared a custom fruit dataset and trained a YOLOv8 model on Google Colab.",
+      },
+    ],
+    futurePlans: [
+      "A lightweight model that runs on the device itself",
+      "A web dashboard for the results",
+      "More fruit classes",
+    ],
     clientRepo: "https://github.com/Istiak0614/fruits-detection-esp32-yolov8",
   },
 ];
