@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { profile } from "@/data/profile";
+import { MotionProvider } from "@/components/motion-provider";
+import { Navbar } from "@/components/layout/navbar";
 import "./globals.css";
 
 const bricolage = localFont({
@@ -48,7 +50,18 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${bricolage.variable} ${plex.variable}`}>
-      <body className="min-h-dvh antialiased">{children}</body>
+      <body className="min-h-dvh antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-electric focus:px-4 focus:py-2 focus:text-ink"
+        >
+          Skip to content
+        </a>
+        <MotionProvider>
+          <Navbar />
+          <div id="main-content">{children}</div>
+        </MotionProvider>
+      </body>
     </html>
   );
 }

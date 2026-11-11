@@ -7,6 +7,7 @@ export const profile = {
   intro:
     "I build complete full-stack features, from database and API to the last interaction on screen, and turn requirements into working, well-structured web applications.",
   photo: "/images/profile.jpg",
+  coreStack: ["MongoDB", "Express", "React", "Node.js", "Next.js", "TypeScript"],
   location: "Dhaka, Bangladesh",
   email: "istiakhossainifti@gmail.com",
   phone: "+8801966764735",
