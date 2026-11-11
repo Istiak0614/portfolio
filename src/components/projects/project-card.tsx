@@ -9,18 +9,17 @@ import { cn } from "@/lib/utils";
 type ProjectCardProps = {
   project: Project;
   layout?: "wide" | "default" | "compact";
-  priority?: boolean;
 };
 
 export function BrowserFrame({
   project,
   sizes,
-  priority,
+  eager,
   className,
 }: {
   project: Project;
   sizes: string;
-  priority?: boolean;
+  eager?: boolean;
   className?: string;
 }) {
   const host = project.liveUrl ? new URL(project.liveUrl).host : "github.com/Istiak0614";
@@ -40,7 +39,8 @@ export function BrowserFrame({
           alt={`Screenshot of ${project.name}`}
           fill
           sizes={sizes}
-          priority={priority}
+          loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : "auto"}
           className="object-cover object-top transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
         />
       </div>
@@ -108,11 +108,11 @@ function StackList({ stack, limit }: { stack: string[]; limit: number }) {
   );
 }
 
-export function ProjectCard({ project, layout = "default", priority }: ProjectCardProps) {
+export function ProjectCard({ project, layout = "default" }: ProjectCardProps) {
   if (layout === "wide") {
     return (
       <article className="group glass relative grid grid-cols-1 gap-8 rounded-[var(--radius-card)] p-4 transition-[border-color,transform] duration-500 hover:border-electric/35 md:p-6 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-10">
-        <BrowserFrame project={project} sizes="(min-width: 1024px) 40rem, 100vw" priority={priority} />
+        <BrowserFrame project={project} sizes="(min-width: 1024px) 40rem, 100vw" />
         <div className="px-2 pb-2 lg:px-0 lg:pr-4">
           <p className="text-sm text-electric-soft">Featured project</p>
           <h3 className="mt-2 text-[clamp(1.75rem,3vw,2.4rem)] font-semibold text-white">{project.name}</h3>

@@ -2,29 +2,12 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, type Variants } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { Mail, MapPin } from "lucide-react";
 import { profile } from "@/data/profile";
 import { buttonVariants } from "@/components/ui/button";
 import { ResumeButton } from "@/components/ui/resume-button";
 import { GithubIcon, LinkedinIcon, WhatsappIcon } from "@/components/icons/brand-icons";
-
-const ease = [0.16, 1, 0.3, 1] as const;
-
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
-};
-
-const nameLine: Variants = {
-  hidden: { y: "105%" },
-  show: { y: "0%", transition: { duration: 0.9, ease } },
-};
 
 const socials = [
   { label: "GitHub", href: profile.socials.github, icon: GithubIcon, external: true },
@@ -33,7 +16,9 @@ const socials = [
   { label: "Email", href: `mailto:${profile.email}`, icon: Mail, external: false },
 ];
 
-const [firstLine, secondLine] = ["Md. Istiak", "Hossain Ifti"];
+const nameLines = ["Md. Istiak", "Hossain Ifti"];
+
+const delay = (seconds: number) => ({ animationDelay: `${seconds}s` });
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -56,49 +41,52 @@ export function Hero() {
       />
 
       <div className="container-page grid grid-cols-1 min-h-dvh items-center gap-14 pt-28 pb-20 md:grid-cols-[1.15fr_0.85fr] md:gap-12 lg:gap-20">
-        <motion.div variants={container} initial="hidden" animate="show" className="max-w-xl">
-          <motion.p
-            variants={item}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-3 py-1 text-sm text-muted"
+        <div className="max-w-xl">
+          <p
+            className="animate-rise mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.02] px-3 py-1 text-sm text-muted"
+            style={delay(0.05)}
           >
             <span className="relative flex size-2" aria-hidden>
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-electric/60" />
               <span className="relative inline-flex size-2 rounded-full bg-electric" />
             </span>
             Open to opportunities
-          </motion.p>
+          </p>
 
           <h1 className="text-[clamp(2.75rem,6.4vw,4.75rem)] font-semibold text-white">
             <span className="sr-only">{profile.name}</span>
-            {[firstLine, secondLine].map((line) => (
+            {nameLines.map((line, index) => (
               <span key={line} aria-hidden className="block overflow-hidden pb-[0.08em]">
-                <motion.span variants={nameLine} className="block">
+                <span className="animate-line-up block" style={delay(0.1 + index * 0.08)}>
                   {line}
-                </motion.span>
+                </span>
               </span>
             ))}
           </h1>
 
-          <motion.p
-            variants={item}
-            className="mt-5 flex items-center gap-3 font-display text-[clamp(1.25rem,2.4vw,1.7rem)] font-medium text-electric-soft"
+          <p
+            className="animate-rise mt-5 flex items-center gap-3 font-display text-[clamp(1.25rem,2.4vw,1.7rem)] font-medium text-electric-soft"
+            style={delay(0.25)}
           >
             <span aria-hidden className="h-px w-8 bg-electric/60" />
             {profile.designation}
-          </motion.p>
+          </p>
 
-          <motion.p variants={item} className="mt-6 max-w-[34rem] text-lg text-muted">
+          <p className="animate-rise mt-6 max-w-[34rem] text-lg text-muted" style={delay(0.3)}>
             {profile.intro}
-          </motion.p>
+          </p>
 
-          <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="animate-rise mt-9 flex flex-wrap items-center gap-3" style={delay(0.38)}>
             <ResumeButton label="View & download résumé" />
             <a href="#contact" className={buttonVariants({ variant: "secondary" })}>
               Contact me
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div
+            className="animate-rise mt-8 flex flex-wrap items-center gap-x-6 gap-y-4"
+            style={delay(0.46)}
+          >
             <ul className="flex items-center gap-2">
               {socials.map(({ label, href, icon: Icon, external }) => (
                 <li key={label}>
@@ -118,9 +106,9 @@ export function Hero() {
               <MapPin aria-hidden className="size-4" />
               {profile.location}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div variants={item} className="mt-10 border-t border-line pt-6">
+          <div className="animate-rise mt-10 border-t border-line pt-6" style={delay(0.54)}>
             <p className="text-sm text-muted">Core stack</p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {profile.coreStack.map((tech) => (
@@ -132,17 +120,13 @@ export function Hero() {
                 </li>
               ))}
             </ul>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease, delay: 0.35 }}
-          style={{ y: photoY }}
-          className="relative mx-auto w-full max-w-[22rem] md:max-w-[26rem]"
-        >
-          <PortraitFrame />
+        <motion.div style={{ y: photoY }} className="relative mx-auto w-full max-w-[22rem] md:max-w-[26rem]">
+          <div className="animate-settle" style={delay(0.2)}>
+            <PortraitFrame />
+          </div>
         </motion.div>
       </div>
     </section>
@@ -172,7 +156,8 @@ function PortraitFrame() {
           alt={`Portrait of ${profile.name}`}
           width={720}
           height={900}
-          priority
+          loading="eager"
+          fetchPriority="high"
           sizes="(min-width: 768px) 26rem, 22rem"
           className="h-auto w-full rounded-[calc(var(--radius-card)-0.375rem)]"
         />
