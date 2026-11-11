@@ -61,7 +61,7 @@ export function Footer() {
 
         <div className="md:text-right">
           <a
-            href="#home"
+            href="#top"
             className="inline-flex items-center gap-2 rounded-xl border border-line px-4 py-2.5 text-sm text-text transition-colors hover:border-electric/50 hover:text-white"
           >
             <ArrowUp aria-hidden className="size-4" />
