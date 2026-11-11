@@ -1,0 +1,75 @@
+"use client";
+
+import type { IconType } from "react-icons";
+import {
+  SiArduino,
+  SiBetterauth,
+  SiC,
+  SiCplusplus,
+  SiCss,
+  SiDotnet,
+  SiEspressif,
+  SiExpress,
+  SiFigma,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiJsonwebtokens,
+  SiMongodb,
+  SiMysql,
+  SiNetlify,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiOdoo,
+  SiOpencv,
+  SiPostgresql,
+  SiPycharm,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiUltralytics,
+  SiVercel,
+} from "react-icons/si";
+import { Code2, Hash, Monitor, type LucideIcon } from "lucide-react";
+
+const icons: Record<string, IconType | LucideIcon> = {
+  HTML: SiHtml5,
+  CSS: SiCss,
+  "Tailwind CSS": SiTailwindcss,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  React: SiReact,
+  "Next.js": SiNextdotjs,
+  "Node.js": SiNodedotjs,
+  Express: SiExpress,
+  MongoDB: SiMongodb,
+  "Better Auth": SiBetterauth,
+  JWT: SiJsonwebtokens,
+  MySQL: SiMysql,
+  PostgreSQL: SiPostgresql,
+  Git: SiGit,
+  GitHub: SiGithub,
+  Vercel: SiVercel,
+  Figma: SiFigma,
+  "VS Code": Code2,
+  PyCharm: SiPycharm,
+  "Visual Studio": Monitor,
+  Netlify: SiNetlify,
+  Python: SiPython,
+  OpenCV: SiOpencv,
+  YOLO: SiUltralytics,
+  "Arduino / ESP32": SiArduino,
+  ESP32: SiEspressif,
+  Odoo: SiOdoo,
+  C: SiC,
+  "C++": SiCplusplus,
+  "C#": Hash,
+  "ASP.NET": SiDotnet,
+};
+
+export function SkillIcon({ name, className }: { name: string; className?: string }) {
+  const Icon = icons[name] ?? Code2;
+  return <Icon aria-hidden className={className} />;
+}
