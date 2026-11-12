@@ -26,6 +26,7 @@ export const projects: Project[] = [
       "Host dashboard with earnings chart and booking-request inbox",
       "Booking lifecycle with downloadable PDF invoices",
     ],
+    facts: { role: "Solo developer", type: "Full-stack (Next.js client + Express API)", built: "5–7 Nov 2026", commits: 22 },
     challenges: [
       {
         title: "Auth that survives reloads",
@@ -74,6 +75,7 @@ export const projects: Project[] = [
       "Protected details showing minimum, maximum and average market prices",
       "Email/password, Google and GitHub sign-in",
     ],
+    facts: { role: "Solo developer", type: "Full-stack Next.js app with MongoDB", built: "8–12 Oct 2026", commits: 15 },
     challenges: [
       {
         title: "An unreliable price API",
@@ -122,6 +124,7 @@ export const projects: Project[] = [
       "Sorting by duration, calories or rating, plus search by name, tag or equipment",
       "Plan and saved data persist across page reloads",
     ],
+    facts: { role: "Solo developer", type: "Frontend app (Next.js + React Context)", built: "24–26 Sep 2026", commits: 13 },
     challenges: [
       {
         title: "Shared state across pages",
@@ -161,6 +164,7 @@ export const projects: Project[] = [
       "Inference offloaded to a laptop because of ESP32-CAM hardware limits",
       "YOLOv8 model trained on a custom fruit dataset",
     ],
+    facts: { role: "Solo developer (course project)", type: "IoT + computer vision", built: "Sep 2026", commits: 5 },
     challenges: [
       {
         title: "Limited hardware",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
@@ -16,6 +16,8 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const active = useActiveSection(sectionIds);
+  const headerRef = useRef<HTMLElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -26,17 +28,33 @@ export function Navbar() {
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+
+    const background = Array.from(document.body.children).filter(
+      (el): el is HTMLElement => el instanceof HTMLElement && !el.contains(headerRef.current),
+    );
+    background.forEach((el) => (el.inert = true));
     document.body.style.overflow = "hidden";
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setOpen(false);
+      toggleRef.current?.focus();
+    };
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const onResize = () => desktop.matches && setOpen(false);
+
     window.addEventListener("keydown", onKey);
+    desktop.addEventListener("change", onResize);
     return () => {
+      background.forEach((el) => (el.inert = false));
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
     };
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6">
+      <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6">
       <nav
         aria-label="Main"
         className={cn(
@@ -96,6 +114,7 @@ export function Navbar() {
         </div>
 
         <button
+          ref={toggleRef}
           type="button"
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}

@@ -112,6 +112,20 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
               </ul>
               <dl className="mt-7 space-y-4 border-t border-line pt-6 text-sm">
                 <div>
+                  <dt className="text-muted">Role</dt>
+                  <dd className="mt-1 text-text">{project.facts.role}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted">Type</dt>
+                  <dd className="mt-1 text-text">{project.facts.type}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted">Commit history</dt>
+                  <dd className="mt-1 text-text">
+                    {project.facts.built} · {project.facts.commits} commits
+                  </dd>
+                </div>
+                <div>
                   <dt className="text-muted">Live project</dt>
                   <dd className="mt-1">
                     {project.liveUrl ? (

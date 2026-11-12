@@ -29,6 +29,7 @@ export type Project = {
   featured: boolean;
   stack: string[];
   highlights: string[];
+  facts: { role: string; type: string; built: string; commits: number };
   challenges: { title: string; detail: string }[];
   futurePlans: string[];
   liveUrl?: string;

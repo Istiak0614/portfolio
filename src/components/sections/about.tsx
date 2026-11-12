@@ -10,6 +10,7 @@ const facts = [
   { label: "Based in", value: profile.location },
   { label: "Studying", value: `B.Sc. in CSE at ${degree.shortName}, ${degree.period}` },
   { label: "Focus", value: "Full-stack web apps with the MERN stack and Next.js" },
+  { label: "Also exploring", value: "AI/ML and computer vision with Python, OpenCV and YOLO" },
   { label: "Currently learning", value: "C# and ASP.NET" },
   { label: "Off-screen", value: "Gaming on PC and mobile" },
 ];
@@ -27,9 +28,13 @@ export function About() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           <Reveal>
             <SectionHeading id="about-title" title="About me" />
-            <p className="mt-8 font-display text-[clamp(1.25rem,2.1vw,1.6rem)] leading-[1.45] font-normal text-text">
+            <p className="mt-8 font-display text-[clamp(1.3rem,2.2vw,1.65rem)] leading-[1.4] text-white">
               {profile.about.journey}
             </p>
+            <div className="mt-6 max-w-[38rem] space-y-4 text-lg text-muted">
+              <p>{profile.about.now}</p>
+              <p>{profile.about.exploring}</p>
+            </div>
           </Reveal>
 
           <Reveal delay={0.1} className="lg:pt-3">
