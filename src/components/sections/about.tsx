@@ -28,7 +28,7 @@ export function About() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
           <Reveal>
             <SectionHeading id="about-title" title="About me" />
-            <p className="mt-8 font-display text-[clamp(1.3rem,2.2vw,1.65rem)] leading-[1.4] text-white">
+            <p className="mt-8 font-display text-[clamp(1.25rem,2vw,1.5rem)] leading-[1.45] font-light text-text">
               {profile.about.journey}
             </p>
             <div className="mt-6 max-w-[38rem] space-y-4 text-lg text-muted">
