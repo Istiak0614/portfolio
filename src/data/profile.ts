@@ -14,8 +14,8 @@ export const profile = {
   phoneDisplay: "+880 1966-764735",
   whatsapp: "8801966764735",
   resume: {
-    available: false,
-    href: "/resume.pdf",
+    available: true,
+    href: "/Md-Istiak-Hossain-Ifti-Resume.pdf",
   },
   socials: {
     github: "https://github.com/Istiak0614",
